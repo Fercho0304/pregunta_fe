@@ -89,37 +89,4 @@ function aceptar(){
 
     setTimeout(()=>{
         window.location.href =
-        "https://wa.me/5219721223829&text=Sí%20❤️,%20quiero%20ser%20tu%20novia";
-    },3000);
-}
-
-function escapar(){
-    let boton = document.getElementById("no");
-
-    let x = Math.random() * (window.innerWidth - 120);
-    let y = Math.random() * (window.innerHeight - 60);
-
-    boton.style.position="absolute";
-    boton.style.left=x+"px";
-    boton.style.top=y+"px";
-}
-
-function lanzarCorazones(){
-    for(let i=0;i<50;i++){
-        let corazon=document.createElement("div");
-        corazon.className="corazon";
-        corazon.innerHTML="❤️";
-        corazon.style.left=Math.random()*100+"vw";
-        corazon.style.animationDuration=(Math.random()*3+2)+"s";
-        document.body.appendChild(corazon);
-
-        setTimeout(()=>{
-            corazon.remove();
-        },5000);
-    }
-}
-
-</script>
-
-</body>
-</html>
+        "https://api.whatsapp.com/send?phone=5219721223829&text=Si%20quiero%20ser%20tu%20novia"
