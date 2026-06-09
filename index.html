@@ -2,20 +2,123 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>¿Quieres ser mi novia?</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Una pregunta importante ❤️</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+    font-family:Arial,sans-serif;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+    z-index:10;
+}
+
+h1{
+    color:#ff4d6d;
+}
+
+button{
+    padding:12px 25px;
+    margin:10px;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    cursor:pointer;
+}
+
+#si{
+    background:#4CAF50;
+    color:white;
+}
+
+#no{
+    background:#ff4d4d;
+    color:white;
+}
+
+.corazon{
+    position:absolute;
+    font-size:25px;
+    animation:subir 5s linear infinite;
+}
+
+@keyframes subir{
+    from{
+        transform:translateY(100vh);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-120px);
+        opacity:0;
+    }
+}
+</style>
 </head>
-<body style="text-align:center;font-family:Arial;margin-top:100px;">
+<body>
 
-<h1>❤️ Tengo una pregunta para ti ❤️</h1>
-<h2>¿Quieres ser mi novia?</h2>
+<div class="card">
+    <h1>❤️ Tengo una pregunta muy importante ❤️</h1>
+    <h2>¿Quieres ser mi novia?</h2>
 
-<button onclick="aceptar()">Sí 💖</button>
+    <button id="si" onclick="aceptar()">Sí 💖</button>
+    <button id="no" onmouseover="escapar()">No 😅</button>
+
+    <p id="mensaje"></p>
+</div>
 
 <script>
-function aceptar() {
-    window.location.href =
-    "https://wa.me/5219721223829?text=Sí%20Fer,%20quiero%20ser%20tu%20novia%20❤️";
+
+function aceptar(){
+    document.getElementById("mensaje").innerHTML =
+    "🥰 ¡Me haces muy feliz! ❤️";
+
+    lanzarCorazones();
+
+    setTimeout(()=>{
+        window.location.href =
+        "https://wa.me/521TU_NUMERO?text=Sí%20❤️,%20quiero%20ser%20tu%20novia";
+    },3000);
 }
+
+function escapar(){
+    let boton = document.getElementById("no");
+
+    let x = Math.random() * (window.innerWidth - 120);
+    let y = Math.random() * (window.innerHeight - 60);
+
+    boton.style.position="absolute";
+    boton.style.left=x+"px";
+    boton.style.top=y+"px";
+}
+
+function lanzarCorazones(){
+    for(let i=0;i<50;i++){
+        let corazon=document.createElement("div");
+        corazon.className="corazon";
+        corazon.innerHTML="❤️";
+        corazon.style.left=Math.random()*100+"vw";
+        corazon.style.animationDuration=(Math.random()*3+2)+"s";
+        document.body.appendChild(corazon);
+
+        setTimeout(()=>{
+            corazon.remove();
+        },5000);
+    }
+}
+
 </script>
 
 </body>
